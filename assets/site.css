@@ -80,7 +80,7 @@ a { color: inherit; }
   border-bottom: var(--rule-heavy) solid var(--ink);
 }
 
-/* Wordmark: ROISIN solid, BREEN as outlined letters */
+/* Wordmark: the name in Anton capitals */
 .wordmark {
   font-family: var(--display);
   text-transform: uppercase;
@@ -89,11 +89,6 @@ a { color: inherit; }
   text-decoration: none;
   white-space: nowrap;
   letter-spacing: 0.01em;
-}
-.wordmark .outline {
-  color: var(--paper);
-  -webkit-text-stroke: 1.2px var(--ink);
-  paint-order: stroke fill;
 }
 
 .site-nav { display: flex; gap: var(--space-7); }
@@ -166,7 +161,7 @@ main { display: block; }
 .credit-list { list-style: none; margin: 0; padding: 0; }
 .credit-list li {
   display: grid;
-  grid-template-columns: 9em 1fr;
+  grid-template-columns: 10em 1fr;
   gap: var(--space-4);
   padding: var(--space-2) 0;
   border-bottom: var(--rule-light) solid var(--hairline);
@@ -407,3 +402,7 @@ main { display: block; }
 /* Phone: each photo fades up as it scrolls into view (set up by wall.js) */
 .wall-fade .figure { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
 .wall-fade .figure.is-in { opacity: 1; transform: none; }
+
+/* Credit names: never break a name across two lines */
+.names { display: flex; flex-wrap: wrap; column-gap: 0.9em; row-gap: 2px; }
+.names > span { white-space: nowrap; }
