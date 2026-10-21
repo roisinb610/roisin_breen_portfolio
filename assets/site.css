@@ -382,3 +382,28 @@ main { display: block; }
 }
 .site-footer a { text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; }
+
+/* ---------- Home: compact intro + image wall ---------- */
+.hero-compact .lead { max-width: 40em; }
+.hero-links { display: flex; gap: var(--space-4); flex-wrap: wrap; margin: var(--space-7) 0 0; }
+
+.wall {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-7);
+  align-items: start;
+}
+.wall-col { display: flex; flex-direction: column; gap: var(--space-7); will-change: transform; }
+.wall .figure img { width: 100%; max-height: none; }
+.wall .figure a { display: block; overflow: hidden; }
+.wall .figure a img { transition: transform .5s ease, opacity .3s ease; }
+.wall .figure a:hover img { transform: scale(1.02); }
+
+@media (max-width: 720px) {
+  .wall { grid-template-columns: 1fr; gap: var(--space-7); }
+  .wall-col { will-change: auto; }
+}
+
+/* Phone: each photo fades up as it scrolls into view (set up by wall.js) */
+.wall-fade .figure { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.wall-fade .figure.is-in { opacity: 1; transform: none; }
