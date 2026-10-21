@@ -5,13 +5,13 @@ A plain static site: HTML pages and one stylesheet. No build step, nothing to in
 ## Pages
 
 - `index.html` — Home
-- `work/index.html` — Work list
-- `work/<project>.html` — one page per project
+- `work/index.html` — Work, in the same four sections as the PDF portfolio: Collaborations, Campaigns & Editorials, Runway, Special Projects
+- `work/<project>.html` — one page per project (Louvre, Under Armour, Repetto, Campaigns & Editorials, FW25, SS25, Hannam House Seoul)
 - `about.html`, `contact.html`
 
 ## Adding a photo
 
-1. Put the image in `images/` (JPG, about 2000px wide is plenty).
+1. Put the image in `images/` (JPG, about 2000px on the long side is plenty). The current photos come from the Sept 2026 PDF portfolio.
 2. In the page, replace a placeholder like
    `<div class="media"><span class="placeholder label">Image to come · …</span></div>`
    with
@@ -22,10 +22,6 @@ A plain static site: HTML pages and one stylesheet. No build step, nothing to in
 ## Adding a project
 
 Copy one of the files in `work/`, rename it, change the words, then add a card for it in `work/index.html` (and on the home page if it's a favourite).
-
-## Draft notes
-
-Dashed boxes (`<p class="todo">…</p>`) are notes for you. Delete each one once the real text is in.
 
 ## Brand
 

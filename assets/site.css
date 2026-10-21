@@ -138,7 +138,7 @@ main { display: block; }
 }
 .display-xl { font-size: clamp(64px, 14vw, 120px); line-height: 0.88; }
 .display-l  { font-size: clamp(48px, 9vw, 72px);  line-height: 0.9; }
-.display-m  { font-size: 40px; line-height: 1; }
+.display-m  { font-size: clamp(32px, 8vw, 40px); line-height: 1; }
 
 .hl {
   background: var(--accent);
@@ -159,9 +159,34 @@ main { display: block; }
 
 /* ---------- Home hero ---------- */
 .hero { padding-top: var(--space-14); padding-bottom: var(--space-14); }
-.hero .display-xl { display: flex; flex-direction: column; align-items: flex-start; gap: 0.06em; }
-.hero .display-xl .hl { padding: 0.04em 0.1em 0; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: var(--space-14);
+  align-items: end;
+}
+.hero .hl { box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .hero-meta { display: flex; gap: var(--space-7); flex-wrap: wrap; margin-bottom: var(--space-7); }
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: var(--space-7); }
+}
+
+/* ---------- Figures & gallery ---------- */
+.figure img { width: 100%; height: auto; }
+.gallery { columns: 3 300px; column-gap: var(--space-7); }
+.gallery .figure { break-inside: avoid; margin-bottom: var(--space-7); }
+
+/* ---------- Stats ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-7);
+  align-content: start;
+}
+.stats > div { border-top: var(--rule-heavy) solid var(--ink); padding-top: var(--space-4); }
+.stats .number { margin: 0 0 var(--space-2); font-size: clamp(44px, 6vw, 72px); }
+.stats .label { margin: 0; }
+.stats-row { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 
 /* ---------- Cards ---------- */
 .grid {
@@ -177,7 +202,7 @@ main { display: block; }
   text-decoration: none;
   background: var(--paper);
 }
-.card .media { aspect-ratio: 4 / 3; border-bottom: var(--rule-heavy) solid var(--ink); }
+.card .media { aspect-ratio: 4 / 5; border-bottom: var(--rule-heavy) solid var(--ink); }
 .card .body { padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); }
 .card h3 {
   font-family: var(--display);
@@ -295,7 +320,10 @@ main { display: block; }
   padding: var(--space-7) var(--page);
   border-top: var(--rule-heavy) solid var(--ink);
 }
+.footer-links { display: flex; gap: var(--space-7); flex-wrap: wrap; }
 .site-footer a { text-decoration: none; }
+.cta { border-top: var(--rule-heavy) solid var(--ink); padding-top: var(--space-7); margin-bottom: 0; }
+.work-section + .work-section { border-top: var(--rule-heavy) solid var(--ink); padding-top: var(--space-14); margin: 0 var(--page); padding-left: 0; padding-right: 0; }
 .site-footer a:hover { text-decoration: underline; }
 
 /* Notes for Roisin: visible only while drafting. Delete the element when the real text is in. */
@@ -309,3 +337,10 @@ main { display: block; }
   margin: 0 0 var(--space-4);
   max-width: 38em;
 }
+
+/* Hero title: extra leading so the highlight block doesn't touch the line above */
+.hero h1 { line-height: 0.95; }
+.hero .hl { display: inline-block; margin-top: 0.1em; padding: 0.04em 0.12em 0; }
+/* Lead image on project pages: keep tall photos within one screen */
+.project-hero img { max-height: 85vh; object-fit: cover; }
+.split { align-items: start; }
