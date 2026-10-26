@@ -241,7 +241,8 @@ main { display: block; }
 }
 .stats .number { margin: 0 0 var(--space-2); font-size: clamp(44px, 6vw, 72px); }
 .stats .label { margin: 0; }
-.stats-row { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+/* About figures: one per line, stacked and left-aligned with the text */
+.stats-row { grid-template-columns: 1fr; max-width: 38em; gap: var(--space-7); }
 
 /* ---------- Work cards: no frame, image then text under a fine rule ---------- */
 .grid {
