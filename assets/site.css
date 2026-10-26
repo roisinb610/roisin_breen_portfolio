@@ -446,9 +446,14 @@ main { display: block; }
 }
 .project-link:hover span:first-child { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
-.section-wall { columns: 3 280px; column-gap: var(--space-7); }
-.section-wall .figure { break-inside: avoid; margin-bottom: var(--space-7); }
-.section-wall .figure img { width: 100%; max-height: none; }
-.section-wall .figure a { display: block; overflow: hidden; }
-.section-wall .figure a img { transition: transform .5s ease; }
+.section-wall {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-7);
+  align-items: start;
+}
+/* Every image in a block is cropped to the same 4:5 shape, so rows always end level */
+.section-wall .figure a { display: block; overflow: hidden; aspect-ratio: 4 / 5; }
+.section-wall .figure img { width: 100%; height: 100%; max-height: none; object-fit: cover; transition: transform .5s ease; }
 .section-wall .figure a:hover img { transform: scale(1.02); }
+@media (max-width: 720px) { .section-wall { grid-template-columns: 1fr; } }
