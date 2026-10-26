@@ -183,10 +183,13 @@ main { display: block; }
 
 /* ---------- Figures, credits & gallery ---------- */
 .figure { margin: 0; }
-.figure img { width: auto; max-width: 100%; height: auto; }
+.figure img { width: 100%; height: auto; }
 
 /* Photos are never cropped, and never taller than one screen */
-.section > .figure img, .split > .figure img, .hero-grid .figure img { max-height: 85vh; }
+/* Portrait photos standing on their own take exactly one column of the grid (half the width), aligned left;
+   on phones they go full width like everything else. */
+.section > .figure.portrait { width: calc((100% - var(--space-7)) / 2); }
+@media (max-width: 720px) { .section > .figure.portrait { width: 100%; } }
 .gallery .figure img { width: 100%; }
 
 .credit { position: relative; margin-top: var(--space-2); }
@@ -380,7 +383,9 @@ main { display: block; }
 .site-footer a:hover { text-decoration: underline; }
 
 /* ---------- Home: compact intro + image wall ---------- */
-.hero-compact .lead { max-width: 40em; }
+/* Home intro: text spans exactly two of the wall's three columns, so its right edge lines up with a column */
+.hero-compact .lead { max-width: calc((100% - 2 * var(--space-7)) * 2 / 3 + var(--space-7)); }
+@media (max-width: 720px) { .hero-compact .lead { max-width: none; } }
 .hero-links { display: flex; gap: var(--space-4); flex-wrap: wrap; margin: var(--space-7) 0 0; }
 
 .wall {
