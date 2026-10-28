@@ -457,3 +457,14 @@ main { display: block; }
 .section-wall .figure img { width: 100%; height: 100%; max-height: none; object-fit: cover; transition: transform .5s ease; }
 .section-wall .figure a:hover img { transform: scale(1.02); }
 @media (max-width: 720px) { .section-wall { grid-template-columns: 1fr; } }
+
+/* Film stills: two per row, all cropped square so rows end level */
+.still-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-7); align-items: start; }
+.still-grid .figure img { aspect-ratio: 1 / 1; width: 100%; height: auto; object-fit: cover; }
+@media (max-width: 720px) { .still-grid { grid-template-columns: 1fr; } }
+
+/* Phones: credit role above the names, so long names never push past the edge */
+@media (max-width: 720px) {
+  .credit-list li { grid-template-columns: 1fr; gap: 2px; }
+  .names > span { white-space: normal; }
+}
